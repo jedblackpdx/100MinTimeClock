@@ -15,12 +15,11 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.16",
-    "@mui/styled-engine-sc": "^6.0.0-alpha.4",
+    "@mui/x-data-grid": "^6.19.1",
     "dayjs": "^1.11.10",
     "foundation-sites": "^6.8.1",
     "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
-    "styled-components": "^6.1.0"
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

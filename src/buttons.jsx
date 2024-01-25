@@ -9,7 +9,7 @@ export default function OutlinedButtons() {
       <Stack direction="row" spacing={2}>
         <Button  onClick={()=>{
             undefined;
-        }} variant="outlined">New Sesh</Button>
+        }} variant="outlined">Add Time!</Button>
       </Stack>
     );
   }
