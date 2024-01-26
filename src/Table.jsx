@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableFooter from "@mui/material/TableFooter";
 import Paper from "@mui/material/Paper";
-import dayjs from "dayjs";
+
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { HourIn, MinIn, HourMin } from "./TimeSelect.jsx";
@@ -15,7 +15,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 let keyNum = 0;
 
-const d = dayjs().format("DD/MMM/YYYY");
+
 const timeType = ["T-Out:", "T-In:"];
 
 function createData(hIn1, mOut1) {
