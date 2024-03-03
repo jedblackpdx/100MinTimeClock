@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { HourIn, MinIn, HourMin } from "./TimeSelect.jsx";
 
-export default function BasicPopover() {
+export default function TimeSelect() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -33,7 +33,8 @@ export default function BasicPopover() {
           horizontal: 'left',
         }}
       >
-        <Typography sx={{ p: 2 }}><HourIn /><MinIn /><Button onClick={''}>add</Button></Typography>
+        {/* <Typography sx={{ p: 2 }}><HourIn /><MinIn /><Button onClick={''}>add</Button></Typography> */}
+        <HourIn /><MinIn /><Button >add</Button>
       </Popover>
     </div>
   );

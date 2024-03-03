@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import dayjs from "dayjs";
 
+import TimeSelect from "./TimeSelectModal"
 import TableX from "./Table";
 import OutlinedButtons from "./Button";
 
@@ -35,7 +36,7 @@ function App() {
           <Item><OutlinedButtons btnText = {"Total Hrs"}/></Item>
         </Grid>
         <Grid xs={4} >
-          <Item><OutlinedButtons btnText = {"Add+"}/></Item>
+          <Item><TimeSelect/></Item>
         </Grid>
       </Grid>
     </Box>

@@ -15,7 +15,6 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 let keyNum = 0;
 
-
 const timeType = ["T-Out:", "T-In:"];
 
 function createData(hIn1, mOut1) {
@@ -57,7 +56,7 @@ const theme = createTheme({
 });
 
 export default function TableX() {
-    const [timeArray, setTimearray] = React.useState(timeRows);
+    const [timeArray, setTimearray] = React.useState();
    
     function setTime() {
      setTimearray(timeRows.push(createData(HourMin[0],HourMin[1])))
@@ -69,11 +68,6 @@ export default function TableX() {
          <TableContainer component={Paper}>
            <Table aria-label="simple table">
              <TableHead >
-               {/* <TableRow >
-                 <TableCell/>
-                 <TableCell/>
-                 <TableCell align="center">{d}</TableCell> 
-               </TableRow> */}
              </TableHead>
              <TableBody align="center">              
              <TableRow
@@ -108,13 +102,7 @@ export default function TableX() {
                  </TableRow>
                ))}
              </TableBody>
-             {/* <TableFooter>
-             <TableRow >
-                 <TableCell/>
-                 <TableCell align="center" sx={{width: "auto"}}>Total Hours: 00 </TableCell>
-                 <TableCell/>
-               </TableRow>
-             </TableFooter> */}
+
            </Table>
          </TableContainer>
        </ThemeProvider>

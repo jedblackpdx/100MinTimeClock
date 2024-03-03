@@ -67,11 +67,6 @@ function MinIn() {
 
     setMin(event.target.value);
     HourMin[1]=event.target.value;
-    if (HourMin.length == 2) {
-      let timeSesh = JSON.stringify(HourMin);
-      localStorage.setItem(`timeSesh${keyNum++}`, timeSesh);
-    }
-
   };
 
   return (
