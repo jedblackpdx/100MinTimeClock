@@ -8,17 +8,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableFooter from "@mui/material/TableFooter";
 import Paper from "@mui/material/Paper";
-
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+
 import { HourIn, MinIn, HourMin } from "./TimeSelect.jsx";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { timeRows } from "./TimeSelectModal.jsx";
 // import { timeContext } from "./TimeContext.jsx";
 
-let keyNum = 0;
 const timeType = ["T-Out:", "T-In:"];
-const timeContext = createContext(timeRows);
 
 const theme = createTheme({
   components: {
@@ -50,14 +48,19 @@ const theme = createTheme({
     },
   },
 });
-
-function TimeEntry({timeRows})  {
-const [tableRow, setRow] = useState(timeRows);
-
-return(
-<timeContext.Provider value={tableRow}>
-{tableRow.map((row, index) => (
-                 <TableRow
+ 
+export default function TableX({data = timeRows}) {
+  const [updatedRow, setRow] = useState();
+  // setRow({data})
+     return (
+       <ThemeProvider theme={theme}>
+         <TableContainer component={Paper}>
+           <Table aria-label="simple table">
+             <TableHead >
+             </TableHead>
+             <TableBody align="center">              
+             {data.map((row, index) => (
+                 <TableRow 
                    id={`timeShesh-${index}`}
                    key={index}
                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -73,21 +76,6 @@ return(
                    </TableCell>
                  </TableRow>
                ))}
-
-</timeContext.Provider>
-)
-}
-
-export default function TableX() {
-    
-     return (
-       <ThemeProvider theme={theme}>
-         <TableContainer component={Paper}>
-           <Table aria-label="simple table">
-             <TableHead >
-             </TableHead>
-             <TableBody align="center">              
-            <TimeEntry timeRows = {timeRows}/>
              </TableBody>
 
            </Table>

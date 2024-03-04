@@ -5,9 +5,10 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import dayjs from "dayjs";
 
-import TimeSelect from "./TimeSelectModal"
+import TimeSelecter from "./TimeSelectModal"
 import TableX from "./Table";
 import OutlinedButtons from "./Button";
+
 
 const d = dayjs().format("DD/MMM/YYYY");
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,7 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function App() {
+export default function App({data}) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -27,20 +28,20 @@ function App() {
           <Item>100 Minute Time Clock Converter</Item>
         </Grid>
         <Grid xs={12} >
-          <Item><TableX/></Item>
+          <Item><TableX data={data}/></Item>
         </Grid>
         <Grid xs={4} >
-          <Item><OutlinedButtons btnText = {d}/></Item>
+          <Item><div>{d}</div></Item>
         </Grid>
         <Grid xs={4} >
-          <Item><OutlinedButtons btnText = {"Total Hrs"}/></Item>
+          <Item><div>Total Hrs: X</div></Item>
         </Grid>
         <Grid xs={4} >
-          <Item><TimeSelect/></Item>
+          <Item><TimeSelecter/></Item>
         </Grid>
+ 
       </Grid>
     </Box>
   );
 }
 
-export default App
