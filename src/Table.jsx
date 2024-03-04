@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,17 +13,12 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { HourIn, MinIn, HourMin } from "./TimeSelect.jsx";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { timeRows } from "./TimeSelectModal.jsx";
+// import { timeContext } from "./TimeContext.jsx";
 
 let keyNum = 0;
-
 const timeType = ["T-Out:", "T-In:"];
-
-function createData(hIn1, mOut1) {
-  return { hIn1, mOut1 };
-}
-
-let timeRows = [];
-// let timeRows = [createData(hIn1, mOut1, hIn2, mOut2)];
+const timeContext = createContext(timeRows);
 
 const theme = createTheme({
   components: {
@@ -55,36 +51,12 @@ const theme = createTheme({
   },
 });
 
-export default function TableX() {
-    const [timeArray, setTimearray] = React.useState();
-   
-    function setTime() {
-     setTimearray(timeRows.push(createData(HourMin[0],HourMin[1])))
-     console.log(timeRows[0].hIn1, timeRows[0].mOut1 );
-    }
-   
-     return (
-       <ThemeProvider theme={theme}>
-         <TableContainer component={Paper}>
-           <Table aria-label="simple table">
-             <TableHead >
-             </TableHead>
-             <TableBody align="center">              
-             <TableRow
-                   id={``}
-                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                 >
-                   <TableCell align="center">
-                   <HourIn />
-                   </TableCell>
-                   <TableCell align="center">
-                     <MinIn />
-                   </TableCell>
-                   <TableCell align="center">
-                   <Button onClick={setTime}>add</Button>
-                   </TableCell>
-                 </TableRow>
-               {timeRows.map((row, index) => (
+function TimeEntry({timeRows})  {
+const [tableRow, setRow] = useState(timeRows);
+
+return(
+<timeContext.Provider value={tableRow}>
+{tableRow.map((row, index) => (
                  <TableRow
                    id={`timeShesh-${index}`}
                    key={index}
@@ -101,6 +73,21 @@ export default function TableX() {
                    </TableCell>
                  </TableRow>
                ))}
+
+</timeContext.Provider>
+)
+}
+
+export default function TableX() {
+    
+     return (
+       <ThemeProvider theme={theme}>
+         <TableContainer component={Paper}>
+           <Table aria-label="simple table">
+             <TableHead >
+             </TableHead>
+             <TableBody align="center">              
+            <TimeEntry timeRows = {timeRows}/>
              </TableBody>
 
            </Table>
