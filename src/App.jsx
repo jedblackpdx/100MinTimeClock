@@ -4,10 +4,12 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 import dayjs from "dayjs";
+import { DataGrid } from '@mui/x-data-grid';
 
 import TimeSelecter from "./TimeSelectModal"
-import TableX from "./Table";
-import OutlinedButtons from "./Button";
+import TimeDataGrid from "./DataGrid";
+// import TableX from "./Table";
+// import OutlinedButtons from "./Button";
 
 
 const d = dayjs().format("DD/MMM/YYYY");
@@ -28,7 +30,7 @@ export default function App({data}) {
           <Item>100 Minute Time Clock Converter</Item>
         </Grid>
         <Grid xs={12} >
-          <Item><TableX data={data}/></Item>
+          <Item><TimeDataGrid/></Item>
         </Grid>
         <Grid xs={4} >
           <Item><div>{d}</div></Item>
