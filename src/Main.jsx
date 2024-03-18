@@ -1,12 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+
+// import MUI's react context provider for spreading the mui theme to all children via useTheme() or natively in mui comps OOB.
+import { ThemeProvider } from '@mui/material/styles'
+
+import App from './App'
+
+// import your custom react context provider for handling time data shared to all children via the hook
+import { TimeContextProvider } from './context/TimeContext'
+import { theme } from './theme'
 import './index.css'
-import App from './App.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <TimeContextProvider>
+        <App />
+      </TimeContextProvider>
+    </ThemeProvider>
   </React.StrictMode>
-  
 )
-
