@@ -1,25 +1,30 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { HourIn, MinIn, HourMin } from "./TimeSelect.jsx";
 
+let keyNum = 0
+const timeRows = [];
+// // let timeRows = [createData(hIn1, mOut1, hIn2, mOut2)];
 
-let timeRows = [];
-// let timeRows = [createData(hIn1, mOut1, hIn2, mOut2)];
-
-function createData(hIn1, mOut1) {
-  return { hIn1, mOut1 };
+function createData(keyNum, hIn1, mOut1) {
+  return { id: keyNum, hundIn: hIn1, hundOut: mOut1 };
 }
- 
+
+function setTime() {
+
+  keyNum = keyNum+1;
+  timeRows.push(createData(keyNum, HourMin[0],HourMin[1]));
+  
+  console.log(`//array check... hour:${HourMin[0]} -- minutes: ${HourMin[1]}`);
+  console.log(`//object check... id:${timeRows[0].id} -- `,`hour:${timeRows[0].hundIn} -- `, `minutes:${timeRows[0].hundOut}`)
+
+ }
+
 export default function TimeSelecter() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [timeArray, setTimearray] = React.useState();
-
-  function setTime() {
-    setTimearray(timeRows.push(createData(HourMin[0],HourMin[1])))
-    console.log(timeRows[0].hIn1, timeRows[0].mOut1 );
-   }
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -54,4 +59,4 @@ export default function TimeSelecter() {
   );
 }
 
-export {timeRows}
+export {keyNum, timeRows, HourIn, MinIn, HourMin}

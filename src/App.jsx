@@ -6,7 +6,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import dayjs from "dayjs";
 import { DataGrid } from '@mui/x-data-grid';
 
-import TimeSelecter from "./TimeSelectModal"
+import TimeSelecter, { timeRows } from "./TimeSelectModal"
 import TimeDataGrid from "./DataGrid";
 // import TableX from "./Table";
 // import OutlinedButtons from "./Button";
@@ -22,6 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function App({data}) {
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>

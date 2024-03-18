@@ -1,6 +1,9 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import { HourIn, MinIn, HourMin } from './TimeSelect';
+import { timeRows } from './TimeSelectModal';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 75 },
@@ -18,16 +21,21 @@ const columns = [
   },
 ];
 
-const rows = [
-  { id: 1, hundIn: '13:77', hundOut: '14:66' },
-  { id: 2, hundIn: '15:69', hundOut: '17:12' }
+let rows = [
+  // { id: timeRows[0].keyNum, hundIn: timeRows[0].hIn1, hundOut: timeRows[0].mOut1 },
 ];
 
 export default function TimeDataGrid() {
-  return (
+    const [state, setState] = useState(timeRows);
+ 
+    rows = () => {
+      setState(timeRows);
+    }
+ 
+  return (  
     <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
-        rows={rows}
+        rows={state}
         columns={columns}
         initialState={{
           pagination: {
