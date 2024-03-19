@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-let keyNum = 0
+
 const HourMin = []
 
 function HourIn() {
@@ -13,7 +13,6 @@ function HourIn() {
   const handleChangeHr = (event) => {
     setHour(event.target.value);
     HourMin[0] = event.target.value;
-
     };
 
   return (
@@ -67,11 +66,7 @@ function MinIn() {
 
     setMin(event.target.value);
     HourMin[1]=event.target.value;
-    if (HourMin.length == 2) {
-      let timeSesh = JSON.stringify(HourMin);
-      localStorage.setItem(`timeSesh${keyNum++}`, timeSesh);
-    }
-
+    
   };
 
   return (

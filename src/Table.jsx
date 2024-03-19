@@ -1,8 +1,5 @@
 import { useState } from 'react'
 import {
-  Button,
-  Paper,
-  Stack,
   Table,
   TableBody,
   TableCell,
@@ -10,52 +7,55 @@ import {
   TableHead,
   TableRow,
   TableFooter,
+  Paper,
+  Button,
+  Stack,
 } from '@mui/material'
-import { HourIn, MinIn, HourMin } from './TimeSelect'
+import { HourIn, MinIn, HourMin } from './TimeSelect.jsx'
+import { timeRows } from './TimeSelectModal.jsx'
 
-let keyNum = 0
 const timeType = ['T-Out:', 'T-In:']
 
-function createData(hIn1, mOut1) {
-  return { hIn1, mOut1 }
-}
+const theme = createTheme({
+  components: {
+    MuiTable: {
+      styleOverrides: {
+        root: {
+          padding: '10px',
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          padding: '15px 0 10px 0',
+          margin: '0px',
+          width: 'fit-content',
+        },
+      },
+    },
+    MuiTableContainer: {
+      styleOverrides: {
+        root: {
+          width: 'fit-content',
+          height: 'fit-content',
+          margin: 'auto',
+          padding: '10px',
+        },
+      },
+    },
+  },
+})
 
-let timeRows = []
-
-export default function TableX() {
-  const [timeArray, setTimearray] = useState(timeRows)
-
-  function setTime() {
-    setTimearray(timeRows.push(createData(HourMin[0], HourMin[1])))
-    console.log(timeRows[0].hIn1, timeRows[0].mOut1)
-  }
-
+export default function TableX({ data = timeRows }) {
+  const [updatedRow, setRow] = useState()
+  // setRow({data})
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
-        <TableHead>
-          {/* <TableRow >
-                 <TableCell/>
-                 <TableCell/>
-                 <TableCell align="center">{d}</TableCell> 
-               </TableRow> */}
-        </TableHead>
+        <TableHead></TableHead>
         <TableBody align="center">
-          <TableRow
-            id={``}
-            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-          >
-            <TableCell align="center">
-              <HourIn />
-            </TableCell>
-            <TableCell align="center">
-              <MinIn />
-            </TableCell>
-            <TableCell align="center">
-              <Button onClick={setTime}>add</Button>
-            </TableCell>
-          </TableRow>
-          {timeRows.map((row, index) => (
+          {data.map((row, index) => (
             <TableRow
               id={`timeShesh-${index}`}
               key={index}
@@ -69,13 +69,6 @@ export default function TableX() {
             </TableRow>
           ))}
         </TableBody>
-        {/* <TableFooter>
-             <TableRow >
-                 <TableCell/>
-                 <TableCell align="center" sx={{width: "auto"}}>Total Hours: 00 </TableCell>
-                 <TableCell/>
-               </TableRow>
-             </TableFooter> */}
       </Table>
     </TableContainer>
   )
